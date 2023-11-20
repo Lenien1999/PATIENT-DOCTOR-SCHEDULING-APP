@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -59,6 +58,22 @@ class _ForgetPasswordMailScreenState extends State<ForgetPasswordMailScreen> {
                   child: Column(
                     children: [
                       TextFielWidget(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter an email';
+                          }
+                          // Use RegExp for basic email validation
+
+                          if (widget.isMail) {
+                            if (!RegExp(
+                                    r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+                                .hasMatch(value)) {
+                              return 'Enter a valid email';
+                            }
+                          }
+                          // ignore: null_check_always_fails
+                          return null!; // Return null if the input is valid
+                        },
                         controller: controller,
                         icon: widget.isMail
                             ? Icons.email

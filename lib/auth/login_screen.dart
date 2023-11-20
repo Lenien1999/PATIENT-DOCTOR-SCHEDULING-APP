@@ -1,4 +1,3 @@
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,7 @@ import 'package:get/get.dart';
 import '../constants/app_style.dart';
 
 import '../constants/forget_passkey_widget.dart';
-import '../constants/navigation_widget.dart';
+ 
 import '../constants/text_field.dart';
 import '../constants/textstyle.dart';
 
@@ -52,6 +51,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFielWidget(
                     controller: email,
                     icon: Icons.email,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an email';
+                      }
+                      // Use RegExp for basic email validation
+                      if (!RegExp(
+                              r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+                          .hasMatch(value)) {
+                        return 'Enter a valid email';
+                      }
+                      // ignore: null_check_always_fails
+                      return null; // Return null if the input is valid
+                    },
                     title: 'Email',
                     isTrailing: false,
                   ),
@@ -63,6 +75,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     icon: Icons.fingerprint,
                     title: 'Password',
                     isTrailing: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an Full Name';
+                      } else if (value.length < 6) {
+                        return 'Password lenght should greater than 6';
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -142,12 +163,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  NavigationWidget(
-                    title: 'Login',
-                    tap: () async {
-                      await controller.signInUser(
-                          email: email.text, password: password.text);
-                    },
+                  SizedBox(
+                    height: 50,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        backgroundColor: AppColor.backColor(),
+                      ),
+                      onPressed: () async {
+                        if (_key.currentState!.validate()) {
+                          print('object');
+                          await controller.signInUser(
+                              email: email.text, password: password.text);
+                        }
+                      },
+                      child: Text(
+                        "Login",
+                        style: textStyle(
+                          size: 18,
+                          weight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 15,

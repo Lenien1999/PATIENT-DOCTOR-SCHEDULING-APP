@@ -1,4 +1,5 @@
- 
+// ignore_for_file: null_check_always_fails
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController fullname = TextEditingController();
   final controller = Get.put(AuthController());
   final usercontroller = Get.put(FirebaseMethods());
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +53,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 10,
                   ),
                   TextFielWidget(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an Full Name';
+                      } else {
+                        return null;
+                      }
+                    },
                     controller: fullname,
                     icon: Ionicons.person_add,
                     title: 'Full Name',
@@ -60,6 +69,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 15,
                   ),
                   TextFielWidget(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an email';
+                      }
+                      // Use RegExp for basic email validation
+                      if (!RegExp(
+                              r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+                          .hasMatch(value)) {
+                        return 'Enter a valid email';
+                      }
+
+                      return null; // Return null if the input is valid
+                    },
                     controller: email,
                     icon: Icons.email,
                     title: 'Email',
@@ -69,6 +91,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 15,
                   ),
                   TextFielWidget(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an Full Name';
+                      } else if (value.length < 6) {
+                        return 'Password lenght should greater than 6';
+                      } else {
+                        return null;
+                      }
+                    },
                     controller: password,
                     icon: Icons.fingerprint,
                     title: 'Password',
@@ -82,6 +113,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     icon: Icons.phone_sharp,
                     title: 'Phone Number',
                     isTrailing: false,
+                     validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your number';
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
                   const SizedBox(
                     height: 15,
@@ -109,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               fullName: fullname.text,
                               email: email.text,
                               phoneNo: phoneNumber.text,
-                              password: password.text,
+                              
                             );
 
                             // Store additional user information in Firestore

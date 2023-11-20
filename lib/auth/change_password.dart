@@ -45,6 +45,15 @@ class _ChangePasswordState extends State<ChangePassword> {
                   icon: Icons.fingerprint,
                   title: 'Password',
                   isTrailing: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an Full Name';
+                    } else if (value.length < 6) {
+                      return 'Password lenght should greater than 6';
+                    } else {
+                      return '';
+                    }
+                  },
                 ),
                 const SizedBox(
                   height: 15,
@@ -54,6 +63,15 @@ class _ChangePasswordState extends State<ChangePassword> {
                   icon: Icons.fingerprint,
                   title: 'Password',
                   isTrailing: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an Full Name';
+                    } else if (value.length < 6) {
+                      return 'Password lenght should greater than 6';
+                    } else {
+                      return '';
+                    }
+                  },
                 ),
                 const SizedBox(
                   height: 15,
