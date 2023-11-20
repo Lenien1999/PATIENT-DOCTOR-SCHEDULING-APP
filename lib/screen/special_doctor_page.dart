@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -9,13 +8,19 @@ import '../constants/textstyle.dart';
 import '../controller/model/doctor_controller.dart/doctor_model.dart';
 import 'book_appointment.dart';
 
-class SpecialistPage extends StatelessWidget {
+class SpecialistPage extends StatefulWidget {
   final DoctorCategory category;
   const SpecialistPage({super.key, required this.category});
 
   @override
+  State<SpecialistPage> createState() => _SpecialistPageState();
+}
+
+class _SpecialistPageState extends State<SpecialistPage> {
+  final searchController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    final String specialist = category.specialist;
+    final String specialist = widget.category.specialist;
     int itemCount = doctorCartegoryList
         .where((element) =>
             element.doctors.any((doc) => doc.specialist == specialist))
@@ -35,9 +40,11 @@ class SpecialistPage extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            const SearchWidget(
+            SearchWidget(
               prefix: 'Search a Doctor',
               trailingIcon: Icons.mic,
+              onChanged: (String value) {},
+              search: searchController,
             ),
             const SizedBox(
               height: 15,

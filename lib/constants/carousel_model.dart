@@ -13,17 +13,17 @@ List<CarouselModel> carouselList = [
       subtitle:
           'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.'),
   CarouselModel(
-      title: 'Medical Center',
+      title: 'Radiologist Center',
       image: 'assets/images/DOCTOR1.png',
       subtitle:
           'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.'),
   CarouselModel(
-      title: 'Medical Center',
+      title: 'Surgery Center',
       image: 'assets/images/doctor4.png',
       subtitle:
           'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.'),
   CarouselModel(
-      title: 'Medical Center',
+      title: 'Nutrition Center',
       image: 'assets/images/dr.png',
       subtitle:
           'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.'),

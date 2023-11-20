@@ -32,6 +32,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return availableIcons[randomIndex];
   }
 
+  final notificationSearch = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final notificationController = Get.put(BookingController());
@@ -57,9 +58,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
       body: Container(
         padding: const EdgeInsets.all(25),
         child: Column(children: [
-          const SearchWidget(
+          SearchWidget(
+            onChanged: (String quary){
+              
+            },
             prefix: 'Search..',
             trailingIcon: Ionicons.notifications,
+            search: notificationSearch,
           ),
           const SizedBox(
             height: 15,

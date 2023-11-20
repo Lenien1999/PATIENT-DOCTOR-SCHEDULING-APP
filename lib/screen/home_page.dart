@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
- 
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.put(AuthController());
 
   UserModel? _userData;
-
+  bool isPress = false;
   @override
   void initState() {
     super.initState();
@@ -301,12 +301,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       color: Colors.black),
                                                 ),
                                                 IconButton(
-                                                    onPressed: () {},
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        isPress = !isPress;
+                                                      });
+                                                    },
                                                     icon: Icon(
-                                                        Icons
-                                                            .favorite_border_outlined,
-                                                        color:
-                                                            AppColor.bgColor()))
+                                                        isPress
+                                                            ? Icons.favorite
+                                                            : Icons
+                                                                .favorite_border_outlined,
+                                                        color: isPress
+                                                            ? AppColor.bgColor()
+                                                            : AppColor
+                                                                .backColor()))
                                               ],
                                             ),
                                             Text(

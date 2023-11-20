@@ -3,12 +3,14 @@ import 'package:ionicons/ionicons.dart';
 
 class SearchWidget extends StatelessWidget {
   final IconData trailingIcon;
-
+  final TextEditingController search;
+   final Function(String)? onChanged;
   final String prefix;
   const SearchWidget({
     super.key,
     required this.trailingIcon,
     required this.prefix,
+    required this.search, this.onChanged,
   });
 
   @override
@@ -16,7 +18,8 @@ class SearchWidget extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: TextFormField(
-        // controller: search,
+        controller: search,
+        onChanged: onChanged,
         decoration: InputDecoration(
             filled: true,
             fillColor: Colors.grey.withOpacity(0.1),

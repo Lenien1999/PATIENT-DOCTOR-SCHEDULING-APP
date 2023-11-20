@@ -4,7 +4,7 @@ class Doctors {
   String specialist;
   String name;
   String description;
-  int favorite;
+  bool favorite;
   String hospital;
   List<WorkingHour> workingHours;
   int? experience;
@@ -20,7 +20,7 @@ class Doctors {
     required this.specialist,
     required this.name,
     required this.description,
-    this.favorite = 0,
+    this.favorite = false,
   });
 
   Map<String, dynamic> toJson() {
@@ -46,7 +46,7 @@ class Doctors {
       specialist: data['specialist'] ?? '',
       name: data['name'] ?? '',
       description: data['description'] ?? '',
-      favorite: data['favorite'] ?? 0,
+      favorite: data['favorite'] ?? false,
       hospital: data['hospital'] ?? '',
       workingHours: workingHours,
       experience: data['experience'],

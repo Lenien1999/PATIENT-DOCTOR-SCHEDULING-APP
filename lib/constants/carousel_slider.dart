@@ -1,4 +1,3 @@
-    
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({
     super.key,
     required this.item,
-  }); 
+  });
 
   final CarouselModel item;
 
@@ -32,7 +31,7 @@ class CarouselSliderWidget extends StatelessWidget {
                 Text(
                   item.title,
                   style: textStyle(
-                      size: 20, weight: FontWeight.bold, color: Colors.white),
+                      size: 16, weight: FontWeight.bold, color: Colors.white),
                 ),
                 Text(
                   item.subtitle,
