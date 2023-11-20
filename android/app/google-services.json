@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "327164246685",
+    "project_id": "patient-doctor-app-f3d8b",
+    "storage_bucket": "patient-doctor-app-f3d8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327164246685:android:2772285847cc6ce987f274",
+        "android_client_info": {
+          "package_name": "com.example.patient_doctor_schedule_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnSOkZi7GkD9JBJMnTThiNqhT2Kc6fcko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
