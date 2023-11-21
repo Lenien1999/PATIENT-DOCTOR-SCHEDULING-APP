@@ -51,7 +51,7 @@ class CarouselSliderWidget extends StatelessWidget {
               child: Image.asset(
                 item.image,
                 height: 100,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ))
         ],
       ),

@@ -175,8 +175,9 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                                     value: appointment.isComplete,
                                     onChanged: (newValue) {
                                       appointment.isComplete = newValue!;
-                                      buildBottomSheet(context, appointment,
-                                          appointmentController);
+                                      appointment.isComplete = true;
+                                      buildBottomSheet(context, true,
+                                          appointment, appointmentController);
                                     },
                                   ),
                                 )
@@ -197,27 +198,22 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
-                                  height: 35,
-                                  child: OutlinedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 15),
-                                        side: BorderSide(
-                                            color: AppColor.bgColor())),
-                                    onPressed: () {
-                                      buildBottomSheet(context, appointment,
-                                          appointmentController);
-                                    },
-                                    child: Text(
-                                      'Cancel Appointment',
-                                      style: textStyle(
-                                          size: 13,
-                                          weight: FontWeight.w600,
-                                          color: AppColor.bgColor()),
-                                    ),
+                                OutlinedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      side: BorderSide(
+                                          color: AppColor.bgColor())),
+                                  onPressed: () {
+                                    buildBottomSheet(context, false,
+                                        appointment, appointmentController);
+                                  },
+                                  child: Text(
+                                    'Cancel Appointment',
+                                    style: textStyle(
+                                        size: 13,
+                                        weight: FontWeight.w600,
+                                        color: AppColor.bgColor()),
                                   ),
                                 ),
                                 const SizedBox(
@@ -226,8 +222,6 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                                 Expanded(
                                   child: SizedBox(
                                     height: 35,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: AppColor.backColor(),
@@ -263,113 +257,125 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
         });
   }
 
-  Future<dynamic> buildBottomSheet(BuildContext context, Bookings appointment,
-      BookingController appointmentController) {
+  Future<dynamic> buildBottomSheet(BuildContext context, bool isComplete,
+      Bookings appointment, BookingController appointmentController) {
     return showModalBottomSheet(
-        context: context,
-        builder: ((context) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(
-                height: 15,
+      context: context,
+      builder: ((context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 15),
+            Text(
+              isComplete
+                  ? 'Cancel Appointment'
+                  : isComplete
+                      ? 'Complete Appointment?'
+                      : 'Cancel Appointment',
+              style: textStyle(
+                size: 20,
+                weight: FontWeight.w600,
+                color: Colors.red,
               ),
-              Text(
-                appointment.isCancelled
-                    ? 'Cancel Appointment'
-                    : appointment.isComplete
-                        ? 'Complete Appointment?'
-                        : 'Cancel Appointment',
-                style: textStyle(
-                    size: 20, weight: FontWeight.w600, color: Colors.red),
+            ),
+            Divider(
+              indent: 30,
+              endIndent: 30,
+              color: Colors.grey.shade400,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              isComplete
+                  ? 'Are you sure you want to Complete the appointment?'
+                  : 'Are you sure you want to Cancel the appointment?',
+              style: textStyle(
+                size: 13,
+                weight: FontWeight.w600,
+                color: Colors.grey,
               ),
-              Divider(
-                indent: 30,
-                endIndent: 30,
-                color: Colors.grey.shade400,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                appointment.isComplete
-                    ? 'Are you sure you want to Complete the appointment?'
-                    : 'Are you sure you want to Cancel the appointment?',
-                style: textStyle(
-                    size: 13, weight: FontWeight.w600, color: Colors.grey),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              backgroundColor: AppColor.bgColor(),
-                            ),
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: Text(
-                              'Back',
-                              style: textStyle(
-                                  size: 18,
-                                  weight: FontWeight.w500,
-                                  color: Colors.white),
-                            )),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      height: 40,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          backgroundColor: AppColor.bgColor(),
+                        ),
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: Text(
+                          'Back',
+                          style: textStyle(
+                            size: 18,
+                            weight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              backgroundColor: AppColor.backColor(),
-                            ),
-                            onPressed: () async {
-                              if (!appointment.isCancelled) {
-                                setState(() {
-                                  appointment.isCancelled = true;
-                                  appointmentController
-                                      .markTaskAsCancelled(appointment);
-                                  // Move to cancel screen or handle cancellation
-                                });
-                              } else {
-                                await appointmentController
-                                    .markTaskAsComplete(appointment);
-                              }
-                              Get.back(); // Navigate back
-                            },
-                            child: Text(
-                              appointment.isCancelled
-                                  ? 'Yes, Cancel'
-                                  : appointment.isComplete
-                                      ? "Complete"
-                                      : 'Cancel',
-                              style: textStyle(
-                                  size: 18,
-                                  weight: FontWeight.w500,
-                                  color: Colors.white),
-                            )),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: SizedBox(
+                      height: 40,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          backgroundColor: AppColor.backColor(),
+                        ),
+                        onPressed: () async {
+                          // Update the appointment status
+
+                          if (isComplete) {
+                            // Appointment is cancelled; mark it as complete
+                            appointment.isComplete = true;
+                            appointment.isCancelled = false;
+                            await appointmentController
+                                .markTaskAsComplete(appointment);
+                          } else {
+                            // Appointment is not cancelled; mark it as cancelled
+                            appointment.isComplete = false;
+                            appointment.isCancelled = true;
+                            await appointmentController
+                                .markTaskAsCancelled(appointment);
+                          }
+                          setState(() {
+                            // Refresh the UI after updating the appointment status
+                          });
+                          Get.back(); // Navigate back
+                        },
+                        child: Text(
+                          appointment.isCancelled
+                              ? 'Yes, Cancel'
+                              : appointment.isComplete
+                                  ? 'Complete'
+                                  : 'Cancel',
+                          style: textStyle(
+                            size: 18,
+                            weight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                  ],
-                ),
-              )
-            ],
-          );
-        }));
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      }),
+    );
   }
 }

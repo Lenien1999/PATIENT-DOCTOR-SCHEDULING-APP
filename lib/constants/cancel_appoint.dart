@@ -57,91 +57,100 @@ class CancelAppointment extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Expanded(
-                                child: Container(
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: const Color.fromARGB(
-                                            255, 140, 196, 187)),
-                                    child: Image.asset(
-                                      cancelled.doctor.image,
-                                      fit: BoxFit.cover,
-                                    )),
-                              ),
+                              Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: const Color.fromARGB(
+                                          255, 140, 196, 187)),
+                                  child: Image.asset(
+                                    cancelled.doctor.image,
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                  )),
                               const SizedBox(
                                 width: 8,
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    cancelled.doctor.name,
-                                    style: textStyle(
-                                        size: 18,
-                                        weight: FontWeight.w600,
-                                        color: Colors.black),
-                                  ),
-                                  Row(
+                              Expanded(
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Messaging--',
+                                        cancelled.doctor.name,
                                         style: textStyle(
-                                            size: 12,
+                                            size: 18,
                                             weight: FontWeight.w600,
-                                            color: Colors.grey),
+                                            color: Colors.black),
                                       ),
-                                      SizedBox(
-                                        height: 25,
-                                        child: OutlinedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              padding: const EdgeInsets.all(0),
-                                              side: const BorderSide(
-                                                  color: Colors.redAccent)),
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Cancelled',
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Messaging--',
                                             style: textStyle(
-                                                size: 10,
+                                                size: 12,
                                                 weight: FontWeight.w600,
-                                                color: Colors.redAccent),
+                                                color: Colors.grey),
                                           ),
-                                        ),
-                                      )
+                                          SizedBox(
+                                            height: 25,
+                                            child: OutlinedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  padding:
+                                                      const EdgeInsets.all(0),
+                                                  side: const BorderSide(
+                                                      color: Colors.redAccent)),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Cancelled',
+                                                style: textStyle(
+                                                    size: 10,
+                                                    weight: FontWeight.w600,
+                                                    color: Colors.redAccent),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            DateFormat.yMEd()
+                                                .format(cancelled.date),
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w600,
+                                                color: Colors.grey),
+                                          ),
+                                          Container(
+                                            width:
+                                                1, // Width of the divider line
+                                            height:
+                                                13, // Height of the divider line
+                                            color: Colors
+                                                .grey, // Color of the divider line
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 8),
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              cancelled.startTime
+                                                  .format(context),
+                                              style: textStyle(
+                                                  size: 12,
+                                                  weight: FontWeight.w500,
+                                                  color: Colors.grey),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        DateFormat.yMMMEd()
-                                            .format(cancelled.date),
-                                        style: textStyle(
-                                            size: 12,
-                                            weight: FontWeight.w600,
-                                            color: Colors.grey),
-                                      ),
-                                      Container(
-                                        width: 1, // Width of the divider line
-                                        height:
-                                            13, // Height of the divider line
-                                        color: Colors
-                                            .grey, // Color of the divider line
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 8),
-                                      ),
-                                      Text(
-                                        cancelled.startTime.format(context),
-                                        style: textStyle(
-                                            size: 12,
-                                            weight: FontWeight.w500,
-                                            color: Colors.grey),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                ),
                               ),
                               CircleAvatar(
                                 backgroundColor:

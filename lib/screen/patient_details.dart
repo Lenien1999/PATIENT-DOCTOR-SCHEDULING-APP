@@ -239,10 +239,7 @@ class _PatientDetailsState extends State<PatientDetails> {
                                   // Task completed, close the dialog
                                   Navigator.of(context).pop();
                                   // Navigate to another page (e.g., LoginScreen)
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const BottomNavigation();
-                                  }));
+                                  Get.offAll(() => BottomNavigation());
                                 });
                                 return AlertDialog(
                                   content: SizedBox(

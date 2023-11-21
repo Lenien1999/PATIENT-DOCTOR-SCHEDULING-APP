@@ -92,6 +92,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       itemBuilder: ((context, index) {
                         final notice = notification[index];
                         return Container(
+                          padding: EdgeInsets.all(15),
                           margin: const EdgeInsets.only(top: 10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
@@ -127,14 +128,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                             children: [
                                               Text(
                                                 notice.isCancelled
-                                                    ? 'Apponitment Cancelled!'
-                                                    : notice.isComplete
-                                                        ? 'Apponitment Completed!'
-                                                        : 'Apponitment Success!',
+                                                    ? 'Appointment Cancelled!'
+                                                    : (notice.isComplete
+                                                        ? 'Appointment Completed!'
+                                                        : 'Appointment Success!'),
                                                 style: textStyle(
-                                                    size: 16,
-                                                    weight: FontWeight.w600,
-                                                    color: Colors.black),
+                                                  size: 16,
+                                                  weight: FontWeight.w600,
+                                                  color: Colors.black,
+                                                ),
                                               ),
                                               const SizedBox(
                                                 height: 5,

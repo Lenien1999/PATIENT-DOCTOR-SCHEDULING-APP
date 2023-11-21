@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:patient_doctor_schedule_app/screen/profile_page.dart';
 
 import '../auth/auth_controller/auth_model.dart';
 import '../auth/auth_controller/authcontroller.dart';
@@ -73,7 +74,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                             children: [
                               InkWell(
-                                onTap: () async {},
+                                onTap: () async {
+                                  Get.to(() => ProfilePage());
+                                },
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(70),
                                   child:
@@ -329,6 +332,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             const SizedBox(
                                               height: 15,
                                             ),
+                                            Spacer(),
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment

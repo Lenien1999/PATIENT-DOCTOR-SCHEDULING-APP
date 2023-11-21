@@ -106,9 +106,7 @@ class _SpecialistPageState extends State<SpecialistPage> {
                                     width: 150,
                                     height: 150,
                                   ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
+                                  Expanded(
                                     child: Column(
                                       children: [
                                         Row(

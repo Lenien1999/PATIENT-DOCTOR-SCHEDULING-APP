@@ -55,100 +55,102 @@ class CompletedAppointment extends StatelessWidget {
                       child: Column(
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Flexible(
-                                flex: 1,
-                                child: Container(
+                              Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: const Color.fromARGB(
+                                          255, 140, 196, 187)),
+                                  child: Image.asset(
+                                    complete.doctor.image,
+                                    width: 100,
                                     height: 100,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: const Color.fromARGB(
-                                            255, 140, 196, 187)),
-                                    child: Image.asset(
-                                      complete.doctor.image,
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
-                                    )),
-                              ),
+                                    fit: BoxFit.cover,
+                                  )),
                               const SizedBox(
                                 width: 12,
                               ),
-                              Flexible(
-                                flex: 3,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      complete.doctor.name,
-                                      style: textStyle(
-                                          size: 18,
-                                          weight: FontWeight.w600,
-                                          color: Colors.black),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Messaging--',
-                                          style: textStyle(
-                                              size: 12,
-                                              weight: FontWeight.w600,
-                                              color: Colors.grey),
-                                        ),
-                                        SizedBox(
-                                          height: 25,
-                                          child: OutlinedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                padding:
-                                                    const EdgeInsets.all(0),
-                                                side: BorderSide(
-                                                    color: AppColor.bgColor())),
-                                            onPressed: () {},
-                                            child: Text(
-                                              'completed',
-                                              style: textStyle(
-                                                  size: 10,
-                                                  weight: FontWeight.w600,
-                                                  color: AppColor.bgColor()),
-                                            ),
+                              Expanded(
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        complete.doctor.name,
+                                        style: textStyle(
+                                            size: 18,
+                                            weight: FontWeight.w600,
+                                            color: Colors.black),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Messaging--',
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w600,
+                                                color: Colors.grey),
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 6,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          DateFormat.yMMMd()
-                                              .format(complete.date),
-                                          style: textStyle(
-                                              size: 12,
-                                              weight: FontWeight.w600,
-                                              color: Colors.grey),
-                                        ),
-                                        Container(
-                                          width: 1, // Width of the divider line
-                                          height:
-                                              13, // Height of the divider line
-                                          color: Colors
-                                              .grey, // Color of the divider line
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 8),
-                                        ),
-                                        Text(
-                                          "${complete.startTime.format(context)}- ${complete.endTime.format(context)}",
-                                          style: textStyle(
-                                              size: 12,
-                                              weight: FontWeight.w500,
-                                              color: Colors.grey),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          SizedBox(
+                                            height: 25,
+                                            child: OutlinedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  padding:
+                                                      const EdgeInsets.all(0),
+                                                  side: BorderSide(
+                                                      color:
+                                                          AppColor.bgColor())),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'completed',
+                                                style: textStyle(
+                                                    size: 10,
+                                                    weight: FontWeight.w600,
+                                                    color: AppColor.bgColor()),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            DateFormat.yMMMd()
+                                                .format(complete.date),
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w600,
+                                                color: Colors.grey),
+                                          ),
+                                          Container(
+                                            width:
+                                                1, // Width of the divider line
+                                            height:
+                                                13, // Height of the divider line
+                                            color: Colors
+                                                .grey, // Color of the divider line
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 8),
+                                          ),
+                                          Text(
+                                            "${complete.startTime.format(context)}- ${complete.endTime.format(context)}",
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w500,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
