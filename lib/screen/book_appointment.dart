@@ -42,7 +42,7 @@ class _BookAppointmentState extends State<BookAppointment> {
           ),
         ),
         body: Container(
-          padding: const EdgeInsets.all(25),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Expanded(
@@ -152,7 +152,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                             child: Text(
                               "${hour.startTime.format(context)} - ${hour.endTime.format(context)}",
                               style: textStyle(
-                                size: 12,
+                                size: 10,
                                 weight: FontWeight.bold,
                                 color: isSelected
                                     ? Colors.white

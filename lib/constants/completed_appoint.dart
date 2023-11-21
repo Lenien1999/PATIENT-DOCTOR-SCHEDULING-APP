@@ -46,7 +46,7 @@ class CompletedAppointment extends StatelessWidget {
                     Get.to(() => AppointmentDetails(bookings: complete));
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(25),
+                    padding: const EdgeInsets.all(10),
                     child: Container(
                       padding: const EdgeInsets.all(13),
                       decoration: BoxDecoration(
@@ -84,7 +84,7 @@ class CompletedAppointment extends StatelessWidget {
                                     Text(
                                       complete.doctor.name,
                                       style: textStyle(
-                                          size: 24,
+                                          size: 18,
                                           weight: FontWeight.w600,
                                           color: Colors.black),
                                     ),
@@ -93,7 +93,7 @@ class CompletedAppointment extends StatelessWidget {
                                         Text(
                                           'Messaging--',
                                           style: textStyle(
-                                              size: 13,
+                                              size: 12,
                                               weight: FontWeight.w600,
                                               color: Colors.grey),
                                         ),
@@ -126,7 +126,7 @@ class CompletedAppointment extends StatelessWidget {
                                           DateFormat.yMMMd()
                                               .format(complete.date),
                                           style: textStyle(
-                                              size: 13,
+                                              size: 12,
                                               weight: FontWeight.w600,
                                               color: Colors.grey),
                                         ),
@@ -142,7 +142,7 @@ class CompletedAppointment extends StatelessWidget {
                                         Text(
                                           "${complete.startTime.format(context)}- ${complete.endTime.format(context)}",
                                           style: textStyle(
-                                              size: 13,
+                                              size: 12,
                                               weight: FontWeight.w500,
                                               color: Colors.grey),
                                         ),

@@ -46,7 +46,7 @@ class CancelAppointment extends StatelessWidget {
                     Get.to(() => AppointmentDetails(bookings: cancelled));
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(25),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
                         Container(
@@ -78,7 +78,7 @@ class CancelAppointment extends StatelessWidget {
                                   Text(
                                     cancelled.doctor.name,
                                     style: textStyle(
-                                        size: 24,
+                                        size: 18,
                                         weight: FontWeight.w600,
                                         color: Colors.black),
                                   ),
@@ -87,7 +87,7 @@ class CancelAppointment extends StatelessWidget {
                                       Text(
                                         'Messaging--',
                                         style: textStyle(
-                                            size: 14,
+                                            size: 12,
                                             weight: FontWeight.w600,
                                             color: Colors.grey),
                                       ),
@@ -119,7 +119,7 @@ class CancelAppointment extends StatelessWidget {
                                         DateFormat.yMMMEd()
                                             .format(cancelled.date),
                                         style: textStyle(
-                                            size: 13,
+                                            size: 12,
                                             weight: FontWeight.w600,
                                             color: Colors.grey),
                                       ),
@@ -135,7 +135,7 @@ class CancelAppointment extends StatelessWidget {
                                       Text(
                                         cancelled.startTime.format(context),
                                         style: textStyle(
-                                            size: 13,
+                                            size: 12,
                                             weight: FontWeight.w500,
                                             color: Colors.grey),
                                       ),

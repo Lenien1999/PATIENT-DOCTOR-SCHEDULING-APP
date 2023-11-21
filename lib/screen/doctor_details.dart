@@ -27,7 +27,7 @@ class DoctorDetails extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             Expanded(

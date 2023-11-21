@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: controller.fireBaseUser.value!.uid == null
             ? const CircularProgressIndicator()
             : Container(
-                padding: const EdgeInsets.all(25),
+                padding: const EdgeInsets.all(10),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 10,
                       ),
                       SizedBox(
-                        height: 210,
+                        height: 230,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: doctorList.length.clamp(1, 4),
@@ -267,7 +267,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   });
                                 },
                                 child: Container(
-                                  height: 205,
                                   padding: const EdgeInsets.all(10),
                                   margin: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
@@ -285,7 +284,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.4,
+                                                0.6,
                                         child: Column(
                                           children: [
                                             Row(

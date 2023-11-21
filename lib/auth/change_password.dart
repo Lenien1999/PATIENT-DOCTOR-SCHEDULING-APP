@@ -20,7 +20,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

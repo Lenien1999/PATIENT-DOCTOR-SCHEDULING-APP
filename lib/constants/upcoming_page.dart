@@ -57,7 +57,7 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                           ));
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(25),
+                      padding: const EdgeInsets.all(10),
                       child: Container(
                         padding: const EdgeInsets.all(13),
                         decoration: BoxDecoration(
@@ -69,6 +69,7 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Expanded(
+                                  flex: 1,
                                   child: Container(
                                       height: 100,
                                       decoration: BoxDecoration(
@@ -85,79 +86,85 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      appointment.doctor.name,
-                                      style: textStyle(
-                                          size: 24,
-                                          weight: FontWeight.w600,
-                                          color: Colors.black),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Messaging-',
-                                          style: textStyle(
-                                              size: 13,
-                                              weight: FontWeight.w600,
-                                              color: Colors.grey),
-                                        ),
-                                        SizedBox(
-                                          height: 25,
-                                          child: OutlinedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                padding:
-                                                    const EdgeInsets.all(0),
-                                                side: BorderSide(
-                                                    color: AppColor.bgColor())),
-                                            onPressed: () {},
-                                            child: Text(
-                                              'upcoming',
-                                              style: textStyle(
-                                                  size: 10,
-                                                  weight: FontWeight.w600,
-                                                  color: AppColor.bgColor()),
-                                            ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        appointment.doctor.name,
+                                        style: textStyle(
+                                            size: 18,
+                                            weight: FontWeight.w600,
+                                            color: Colors.black),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Messaging-',
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w600,
+                                                color: Colors.grey),
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 6,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          DateFormat.yMMMd()
-                                              .format(appointment.date),
-                                          style: textStyle(
-                                              size: 13,
-                                              weight: FontWeight.w600,
-                                              color: Colors.grey),
-                                        ),
-                                        Container(
-                                          width: 1, // Width of the divider line
-                                          height:
-                                              13, // Height of the divider line
-                                          color: Colors
-                                              .grey, // Color of the divider line
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 8),
-                                        ),
-                                        Text(
-                                          "${appointment.startTime.format(context)}-${appointment.endTime.format(context)}",
-                                          style: textStyle(
-                                              size: 13,
-                                              weight: FontWeight.w500,
-                                              color: Colors.grey),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          SizedBox(
+                                            height: 25,
+                                            child: OutlinedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  padding:
+                                                      const EdgeInsets.all(0),
+                                                  side: BorderSide(
+                                                      color:
+                                                          AppColor.bgColor())),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'upcoming',
+                                                style: textStyle(
+                                                    size: 10,
+                                                    weight: FontWeight.w600,
+                                                    color: AppColor.bgColor()),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            DateFormat.yMMMd()
+                                                .format(appointment.date),
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w600,
+                                                color: Colors.grey),
+                                          ),
+                                          Container(
+                                            width:
+                                                1, // Width of the divider line
+                                            height:
+                                                13, // Height of the divider line
+                                            color: Colors
+                                                .grey, // Color of the divider line
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 8),
+                                          ),
+                                          Text(
+                                            "${appointment.startTime.format(context)}-${appointment.endTime.format(context)}",
+                                            style: textStyle(
+                                                size: 12,
+                                                weight: FontWeight.w500,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 CircleAvatar(
                                   backgroundColor:
@@ -191,6 +198,8 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
                                   height: 35,
                                   child: OutlinedButton(
                                     style: ElevatedButton.styleFrom(
@@ -212,29 +221,33 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  width: 4,
+                                  width: 5,
                                 ),
-                                SizedBox(
-                                  height: 35,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColor.backColor(),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 15),
-                                    ),
-                                    onPressed: () {
-                                      Get.to(() {
-                                        return BookAppointment(
-                                          doctor: appointment.doctor,
-                                        );
-                                      });
-                                    },
-                                    child: Text(
-                                      'Reschedule Appointment',
-                                      style: textStyle(
-                                          size: 13,
-                                          weight: FontWeight.w600,
-                                          color: Colors.white),
+                                Expanded(
+                                  child: SizedBox(
+                                    height: 35,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColor.backColor(),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                      ),
+                                      onPressed: () {
+                                        Get.to(() {
+                                          return BookAppointment(
+                                            doctor: appointment.doctor,
+                                          );
+                                        });
+                                      },
+                                      child: Text(
+                                        'Reschedule Appointment',
+                                        style: textStyle(
+                                            size: 12,
+                                            weight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                 )
@@ -266,7 +279,7 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                     ? 'Cancel Appointment'
                     : appointment.isComplete
                         ? 'Complete Appointment?'
-                        : 'null',
+                        : 'Cancel Appointment',
                 style: textStyle(
                     size: 20, weight: FontWeight.w600, color: Colors.red),
               ),
@@ -279,7 +292,9 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                 height: 20,
               ),
               Text(
-                'Are you sure you want to Complete the appointment?',
+                appointment.isComplete
+                    ? 'Are you sure you want to Complete the appointment?'
+                    : 'Are you sure you want to Cancel the appointment?',
                 style: textStyle(
                     size: 13, weight: FontWeight.w600, color: Colors.grey),
               ),
@@ -324,21 +339,25 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                               backgroundColor: AppColor.backColor(),
                             ),
                             onPressed: () async {
-                              appointment.isCancelled
-                                  ? setState(() {
-                                      appointment.isCancelled = true;
-                                      appointmentController
-                                          .markTaskAsCancelled(appointment);
-                                      // Move to cancel screen
-                                    })
-                                  : await appointmentController
-                                      .markTaskAsComplete(appointment);
-                              Get.back();
+                              if (!appointment.isCancelled) {
+                                setState(() {
+                                  appointment.isCancelled = true;
+                                  appointmentController
+                                      .markTaskAsCancelled(appointment);
+                                  // Move to cancel screen or handle cancellation
+                                });
+                              } else {
+                                await appointmentController
+                                    .markTaskAsComplete(appointment);
+                              }
+                              Get.back(); // Navigate back
                             },
                             child: Text(
                               appointment.isCancelled
                                   ? 'Yes, Cancel'
-                                  : 'Complete',
+                                  : appointment.isComplete
+                                      ? "Complete"
+                                      : 'Cancel',
                               style: textStyle(
                                   size: 18,
                                   weight: FontWeight.w500,

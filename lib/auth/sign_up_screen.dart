@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     icon: Icons.phone_sharp,
                     title: 'Phone Number',
                     isTrailing: false,
-                     validator: (value) {
+                    validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your number';
                       } else {
@@ -147,7 +147,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               fullName: fullname.text,
                               email: email.text,
                               phoneNo: phoneNumber.text,
-                              
                             );
 
                             // Store additional user information in Firestore

@@ -56,12 +56,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(10),
         child: Column(children: [
           SearchWidget(
-            onChanged: (String quary){
-              
-            },
+            onChanged: (String quary) {},
             prefix: 'Search..',
             trailingIcon: Ionicons.notifications,
             search: notificationSearch,
@@ -105,7 +103,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               Row(
                                 children: [
                                   CircleAvatar(
-                                    radius: 30,
+                                    radius: 20,
                                     backgroundColor: Colors.primaries[Random()
                                         .nextInt(Colors.primaries.length)],
                                     child: Icon(
@@ -174,23 +172,23 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                 ],
                                               ),
                                             ]),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              color: AppColor.bgColor()),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 5),
-                                            child: Text(
-                                              'New',
-                                              style: textStyle(
-                                                  size: 14,
-                                                  weight: FontWeight.w600,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(10),
+                                        //       color: AppColor.bgColor()),
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.symmetric(
+                                        //         horizontal: 8, vertical: 5),
+                                        //     child: Text(
+                                        //       'New',
+                                        //       style: textStyle(
+                                        //           size: 14,
+                                        //           weight: FontWeight.w600,
+                                        //           color: Colors.white),
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                   ),

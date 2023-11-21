@@ -28,7 +28,7 @@ class OtpVerification extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(15),
             child: Column(
               children: [
                 Image.asset(

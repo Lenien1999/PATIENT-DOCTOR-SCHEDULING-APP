@@ -38,7 +38,7 @@ class AppointmentDetails extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -79,15 +79,15 @@ class AppointmentDetails extends StatelessWidget {
                                   Text(
                                     bookings.doctor.name,
                                     style: textStyle(
-                                        size: 24,
+                                        size: 20,
                                         weight: FontWeight.w600,
                                         color: Colors.black),
                                   ),
-                                  const SizedBox(
+                                  SizedBox(
                                     width: 200,
                                     child: Divider(
                                       thickness: 1,
-                                      color: Colors.grey,
+                                      color: Color.fromARGB(238, 238, 238, 1),
                                     ),
                                   ),
                                   Text(
@@ -98,12 +98,12 @@ class AppointmentDetails extends StatelessWidget {
                                         color: AppColor.bgColor()),
                                   ),
                                   const SizedBox(
-                                    height: 4,
+                                    height: 3,
                                   ),
                                   Text(
                                     bookings.doctor.hospital,
                                     style: textStyle(
-                                        size: 15,
+                                        size: 14,
                                         weight: FontWeight.w600,
                                         color: Colors.grey),
                                   ),
@@ -169,7 +169,7 @@ class AppointmentDetails extends StatelessWidget {
                           color: AppColor.backColor()),
                     ),
                     const SizedBox(
-                      height: 12,
+                      height: 10,
                     ),
                     Column(
                       children: [
@@ -221,7 +221,7 @@ class AppointmentDetails extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      height: 12,
+                      height: 15,
                     ),
                     Text(
                       'Your Packaging',
