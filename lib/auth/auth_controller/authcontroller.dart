@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 import '../../constants/bottombar_navigation.dart';
 import '../../screen/splash_screen.dart';
-import 'auth_model.dart';
+ 
 import 'authexception.dart';
 
 class AuthController extends GetxController {
@@ -46,8 +46,8 @@ class AuthController extends GetxController {
           snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
     } catch (_) {
       const error = SignandLoginFailure();
-      Get.snackbar("Error", error.failure,
-          snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
+      Get.snackbar("Success", error.failure,
+          snackPosition: SnackPosition.TOP, backgroundColor: Colors.green);
     }
   }
 
@@ -61,8 +61,8 @@ class AuthController extends GetxController {
           snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
     } catch (_) {
       const error = SignandLoginFailure();
-      Get.snackbar("Error", error.failure,
-          snackPosition: SnackPosition.TOP, backgroundColor: Colors.red);
+      Get.snackbar("Success", error.failure,
+          snackPosition: SnackPosition.TOP, backgroundColor: Colors.green);
     }
   }
 
@@ -83,17 +83,7 @@ class AuthController extends GetxController {
       Get.back();
     }
   }
-
-  Future<UserModel?> getCurrentUserData() async {
-    final currentUser = fireBaseUser.value;
-    if (currentUser != null) {
-      final userDoc = await _db.collection('users').doc(currentUser.uid).get();
-      if (userDoc.exists) {
-        return UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
-      }
-    }
-    return null;
-  }
+ 
 
   Future<void> logout() async {
     await _auth.signOut();

@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:patient_doctor_schedule_app/controller/model/appointment_controller/booking_model.dart';
 import 'package:patient_doctor_schedule_app/db_manager/appointment_controller.dart';
 import 'package:patient_doctor_schedule_app/screen/appointment_details.dart';
+import 'package:patient_doctor_schedule_app/screen/chat_messages/chat_screen.dart';
 
 import 'app_style.dart';
 import 'textstyle.dart';
@@ -152,13 +153,20 @@ class CancelAppointment extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              CircleAvatar(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 217, 223, 222),
-                                radius: 30,
-                                child: Icon(
-                                  Ionicons.chatbox_ellipses,
-                                  color: AppColor.backColor(),
+                              InkWell(
+                                onTap: () {
+                                  Get.to(() => ChatScreen(
+                                        doctor: cancelled,
+                                      ));
+                                },
+                                child: CircleAvatar(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 217, 223, 222),
+                                  radius: 30,
+                                  child: Icon(
+                                    Ionicons.chatbox_ellipses,
+                                    color: AppColor.backColor(),
+                                  ),
                                 ),
                               )
                             ],

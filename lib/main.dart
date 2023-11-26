@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:patient_doctor_schedule_app/Api/firebase_api.dart';
 
 import 'auth/auth_controller/authcontroller.dart';
 import 'firebase_options.dart';
@@ -11,6 +12,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthController()));
+  await FirebaseApi().initNotification();
 
   runApp(const MyApp());
 }

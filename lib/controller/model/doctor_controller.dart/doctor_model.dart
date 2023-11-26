@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Doctors {
+  String? id;
   String specialist;
   String name;
   String description;
@@ -12,6 +13,7 @@ class Doctors {
   String image;
 
   Doctors({
+    this.id,
     required this.workingHours,
     required this.aboutMe,
     this.experience,
@@ -25,6 +27,7 @@ class Doctors {
 
   Map<String, dynamic> toJson() {
     return {
+      'id':id,
       'specialist': specialist,
       'name': name,
       'description': description,
@@ -37,8 +40,7 @@ class Doctors {
     };
   }
 
-
-  factory Doctors.fromJson(Map<String, dynamic> data) {
+  factory Doctors.fromJson(Map<String, dynamic> data, String id) {
     List<dynamic> workingHoursData = data['workingHours'] ?? [];
     List<WorkingHour> workingHours =
         workingHoursData.map((whData) => WorkingHour.fromJson(whData)).toList();

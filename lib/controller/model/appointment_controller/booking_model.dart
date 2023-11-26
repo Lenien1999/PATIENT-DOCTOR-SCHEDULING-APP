@@ -15,7 +15,7 @@ class Bookings {
   Doctors doctor;
   DateTime date;
   TimeOfDay startTime;
-   DateTime? cancellationTimestamp;
+  DateTime? cancellationTimestamp;
   TimeOfDay endTime;
   Bookings({
     this.isCancelled = false,
@@ -68,11 +68,12 @@ class Bookings {
       problems: data['problems'] ?? '',
       isCancelled: data['isCancelled'] ?? false,
       isComplete: data['isComplete'] ?? false,
-      doctor: Doctors.fromJson(data['doctor'] ?? {}),
+      doctor: Doctors.fromJson(data['doctor'] ?? {}, id),
       startTime: _convertStringToTimeOfDay(data['startTime'] ?? ''),
       endTime: _convertStringToTimeOfDay(data['endTime'] ?? ''),
       cancellationTimestamp:
-          (data['cancellationTimestamp'] as Timestamp?)?.toDate()?? DateTime.now(),
+          (data['cancellationTimestamp'] as Timestamp?)?.toDate() ??
+              DateTime.now(),
     );
   }
   static TimeOfDay _convertStringToTimeOfDay(String timeString) {

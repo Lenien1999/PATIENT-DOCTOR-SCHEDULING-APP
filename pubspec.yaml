@@ -51,6 +51,7 @@ dependencies:
   firebase_core: ^2.22.0
   shared_preferences:
   read_more_text: ^0.0.5
+  firebase_messaging:
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +62,7 @@ flutter_icons:
   ios: true
   image_path: "assets/images/appicon.png"
   adaptive_icon_foreground: 'assets/images/appicon.png'
-  
+
   web:
     generate: true
     image_path: "assets/images/appicon.png"

@@ -2,10 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constants/animation.dart';
 import '../constants/app_style.dart';
 
 import '../constants/forget_passkey_widget.dart';
- 
+
 import '../constants/text_field.dart';
 import '../constants/textstyle.dart';
 
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final controller = Get.put(AuthController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,34 +40,46 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _key,
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/images/splash.png',
-                    color: AppColor.bgColor(),
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.cover,
+                  FadeInAnimation(
+                    duration: const Duration(
+                        milliseconds:
+                            500), // Define the duration of the animation
+                    delay: const Duration(milliseconds: 100),
+                    child: Image.asset(
+                      'assets/images/splash.png',
+                      color: AppColor.bgColor(),
+                      height: 80,
+                      width: 80,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  TextFielWidget(
-                    controller: email,
-                    icon: Icons.email,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter an email';
-                      }
-                      // Use RegExp for basic email validation
-                      if (!RegExp(
-                              r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
-                          .hasMatch(value)) {
-                        return 'Enter a valid email';
-                      }
-                      // ignore: null_check_always_fails
-                      return null; // Return null if the input is valid
-                    },
-                    title: 'Email',
-                    isTrailing: false,
+                  FadeInAnimation(
+                    duration: const Duration(
+                        milliseconds:
+                            750), // Define the duration of the animation
+                    delay: Duration(milliseconds: 200),
+                    child: TextFielWidget(
+                      controller: email,
+                      icon: Icons.email,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter an email';
+                        }
+                        // Use RegExp for basic email validation
+                        if (!RegExp(
+                                r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+                            .hasMatch(value)) {
+                          return 'Enter a valid email';
+                        }
+                        // ignore: null_check_always_fails
+                        return null; // Return null if the input is valid
+                      },
+                      title: 'Email',
+                      isTrailing: false,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

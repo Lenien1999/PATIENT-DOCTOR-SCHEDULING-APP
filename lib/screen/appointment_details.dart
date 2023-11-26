@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:patient_doctor_schedule_app/constants/navigation_widget.dart';
+import 'package:patient_doctor_schedule_app/screen/chat_messages/chat_screen.dart';
 
 import '../constants/app_style.dart';
 import '../constants/textstyle.dart';
@@ -38,7 +40,7 @@ class AppointmentDetails extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -336,7 +338,9 @@ class AppointmentDetails extends StatelessWidget {
                             )),
                       )
                     : NavigationWidget(
-                        tap: () {},
+                        tap: () {
+                          Get.to(() => ChatScreen(doctor: bookings));
+                        },
                         title:
                             'Message start (${bookings.startTime.format(context)})',
                       ))

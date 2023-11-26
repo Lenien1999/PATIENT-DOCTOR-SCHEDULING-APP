@@ -31,7 +31,7 @@ class _FadeInAnimationState extends State<FadeInAnimation>
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Curves.easeInOut,
+        curve: Curves.bounceIn,
       ),
     );
 

@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 class SignandLoginFailure {
   final String failure;
 
-  const SignandLoginFailure([this.failure = 'An unknown error as occurred']);
+  const SignandLoginFailure([ this.failure = 'An unknown error as occurred']);
 
-  factory SignandLoginFailure.code(String code) {
+  factory SignandLoginFailure.code (String code) {
     String errorMessage;
     switch (code) {
       case 'weak-password':

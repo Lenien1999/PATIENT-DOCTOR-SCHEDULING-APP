@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:patient_doctor_schedule_app/constants/animation.dart';
 import 'package:patient_doctor_schedule_app/screen/appointment_details.dart';
 import '../controller/model/appointment_controller/booking_model.dart';
 import '../db_manager/appointment_controller.dart';
@@ -56,198 +57,208 @@ class _UpComingAppointmentState extends State<UpComingAppointment> {
                             bookings: appointment,
                           ));
                     },
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
+                    child: FadeInAnimation(
+                      duration: const Duration(
+                          milliseconds:
+                              500), // Define the duration of the animation
+                      delay: Duration(milliseconds: 100 * index), // D
                       child: Container(
-                        padding: const EdgeInsets.all(13),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          color: const Color.fromARGB(
-                                              255, 140, 196, 187)),
-                                      child: Image.asset(
-                                        appointment.doctor.image,
-                                        width: double.infinity,
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        appointment.doctor.name,
-                                        style: textStyle(
-                                            size: 18,
-                                            weight: FontWeight.w600,
-                                            color: Colors.black),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Messaging-',
-                                            style: textStyle(
-                                                size: 12,
-                                                weight: FontWeight.w600,
-                                                color: Colors.grey),
-                                          ),
-                                          SizedBox(
-                                            height: 25,
-                                            child: OutlinedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  padding:
-                                                      const EdgeInsets.all(0),
-                                                  side: BorderSide(
-                                                      color:
-                                                          AppColor.bgColor())),
-                                              onPressed: () {},
-                                              child: Text(
-                                                'upcoming',
-                                                style: textStyle(
-                                                    size: 10,
-                                                    weight: FontWeight.w600,
-                                                    color: AppColor.bgColor()),
-                                              ),
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          padding: const EdgeInsets.all(13),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Container(
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            color: const Color.fromARGB(
+                                                255, 140, 196, 187)),
+                                        child: Image.asset(
+                                          appointment.doctor.image,
+                                          width: double.infinity,
+                                          fit: BoxFit.cover,
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          appointment.doctor.name,
+                                          style: textStyle(
+                                              size: 18,
+                                              weight: FontWeight.w600,
+                                              color: Colors.black),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'Messaging-',
+                                              style: textStyle(
+                                                  size: 12,
+                                                  weight: FontWeight.w600,
+                                                  color: Colors.grey),
                                             ),
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 6,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            DateFormat.yMMMd()
-                                                .format(appointment.date),
-                                            style: textStyle(
-                                                size: 12,
-                                                weight: FontWeight.w600,
-                                                color: Colors.grey),
-                                          ),
-                                          Container(
-                                            width:
-                                                1, // Width of the divider line
-                                            height:
-                                                13, // Height of the divider line
-                                            color: Colors
-                                                .grey, // Color of the divider line
-                                            margin: const EdgeInsets.symmetric(
-                                                horizontal: 8),
-                                          ),
-                                          Text(
-                                            "${appointment.startTime.format(context)}-${appointment.endTime.format(context)}",
-                                            style: textStyle(
-                                                size: 12,
-                                                weight: FontWeight.w500,
-                                                color: Colors.grey),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                CircleAvatar(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 217, 223, 222),
-                                  radius: 25,
-                                  child: Checkbox(
-                                    activeColor: Colors.teal,
-                                    value: appointment.isComplete,
-                                    onChanged: (newValue) {
-                                      appointment.isComplete = newValue!;
-                                      appointment.isComplete = true;
-                                      buildBottomSheet(context, true,
-                                          appointment, appointmentController);
-                                    },
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Divider(
-                              height: 1,
-                              color: Colors.grey.withOpacity(0.3),
-                              indent: 5,
-                              endIndent: 5,
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                OutlinedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 15),
-                                      side: BorderSide(
-                                          color: AppColor.bgColor())),
-                                  onPressed: () {
-                                    buildBottomSheet(context, false,
-                                        appointment, appointmentController);
-                                  },
-                                  child: Text(
-                                    'Cancel Appointment',
-                                    style: textStyle(
-                                        size: 13,
-                                        weight: FontWeight.w600,
-                                        color: AppColor.bgColor()),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Expanded(
-                                  child: SizedBox(
-                                    height: 35,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppColor.backColor(),
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 15),
-                                      ),
-                                      onPressed: () {
-                                        Get.to(() {
-                                          return BookAppointment(
-                                            doctor: appointment.doctor,
-                                          );
-                                        });
-                                      },
-                                      child: Text(
-                                        'Reschedule Appointment',
-                                        style: textStyle(
-                                            size: 12,
-                                            weight: FontWeight.w600,
-                                            color: Colors.white),
-                                      ),
+                                            SizedBox(
+                                              height: 25,
+                                              child: OutlinedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    padding:
+                                                        const EdgeInsets.all(0),
+                                                    side: BorderSide(
+                                                        color: AppColor
+                                                            .bgColor())),
+                                                onPressed: () {},
+                                                child: Text(
+                                                  'upcoming',
+                                                  style: textStyle(
+                                                      size: 10,
+                                                      weight: FontWeight.w600,
+                                                      color:
+                                                          AppColor.bgColor()),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              DateFormat.yMMMd()
+                                                  .format(appointment.date),
+                                              style: textStyle(
+                                                  size: 12,
+                                                  weight: FontWeight.w600,
+                                                  color: Colors.grey),
+                                            ),
+                                            Container(
+                                              width:
+                                                  1, // Width of the divider line
+                                              height:
+                                                  13, // Height of the divider line
+                                              color: Colors
+                                                  .grey, // Color of the divider line
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8),
+                                            ),
+                                            Text(
+                                              "${appointment.startTime.format(context)}-${appointment.endTime.format(context)}",
+                                              style: textStyle(
+                                                  size: 12,
+                                                  weight: FontWeight.w500,
+                                                  color: Colors.grey),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                )
-                              ],
-                            )
-                          ],
+                                  CircleAvatar(
+                                    backgroundColor: const Color.fromARGB(
+                                        255, 217, 223, 222),
+                                    radius: 25,
+                                    child: Checkbox(
+                                      activeColor: Colors.teal,
+                                      value: appointment.isComplete,
+                                      onChanged: (newValue) {
+                                        appointment.isComplete = newValue!;
+                                        appointment.isComplete = true;
+                                        buildBottomSheet(context, true,
+                                            appointment, appointmentController);
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Divider(
+                                height: 1,
+                                color: Colors.grey.withOpacity(0.3),
+                                indent: 5,
+                                endIndent: 5,
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  OutlinedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        side: BorderSide(
+                                            color: AppColor.bgColor())),
+                                    onPressed: () {
+                                      buildBottomSheet(context, false,
+                                          appointment, appointmentController);
+                                    },
+                                    child: Text(
+                                      'Cancel Appointment',
+                                      style: textStyle(
+                                          size: 13,
+                                          weight: FontWeight.w600,
+                                          color: AppColor.bgColor()),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(
+                                      height: 35,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: AppColor.backColor(),
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                        ),
+                                        onPressed: () {
+                                          Get.to(() {
+                                            return BookAppointment(
+                                              doctor: appointment.doctor,
+                                            );
+                                          });
+                                        },
+                                        child: Text(
+                                          'Reschedule Appointment',
+                                          style: textStyle(
+                                              size: 12,
+                                              weight: FontWeight.w600,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
